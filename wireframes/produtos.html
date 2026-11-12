@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wireframe | Produtos — OrderFlow</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <header class="bg-white border-bottom"><div class="container py-3">
+    <a class="navbar-brand fw-bold text-success" href="inicio.html"><i class="bi bi-box-seam"></i> OrderFlow</a>
+    <nav class="nav nav-pills gap-2 mt-3" aria-label="Navegação das telas">
+      <a class="nav-link text-body" href="inicio.html">Início</a><a class="nav-link text-body" href="clientes.html">Clientes</a><a class="nav-link active" aria-current="page" href="produtos.html">Produtos</a><a class="nav-link text-body" href="pedidos.html">Pedidos</a><a class="nav-link text-body" href="novo-pedido.html">Novo pedido</a>
+    </nav>
+  </div></header>
+  <main class="container py-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+      <div><p class="text-secondary mb-1">CATÁLOGO</p><h1 class="h2 mb-1">Produtos</h1><p class="text-secondary mb-0">Acompanhe preços e quantidade disponível.</p></div>
+      <button class="btn btn-success" type="button"><i class="bi bi-plus-lg me-1"></i>Novo produto</button>
+    </div>
+    <section class="card">
+      <div class="card-header bg-white row g-2 align-items-center mx-0">
+        <div class="col-12 col-md-5"><label class="visually-hidden" for="search-product">Buscar produto</label><input class="form-control" id="search-product" type="search" placeholder="Buscar produto"></div>
+        <div class="col-12 col-md-3"><label class="visually-hidden" for="filter-category">Categoria</label><select class="form-select" id="filter-category"><option>Todas as categorias</option><option>Acessórios</option><option>Casa</option><option>Vestuário</option></select></div>
+        <div class="col-12 col-md-3"><label class="visually-hidden" for="filter-stock">Estoque</label><select class="form-select" id="filter-stock"><option>Qualquer estoque</option><option>Disponível</option><option>Estoque baixo</option><option>Sem estoque</option></select></div>
+        <span class="col small text-secondary text-md-end">3 produtos</span>
+      </div>
+      <div class="table-responsive"><table class="table table-hover align-middle mb-0">
+        <thead><tr><th>Produto</th><th>Categoria</th><th>SKU</th><th>Estoque</th><th>Preço</th><th>Status</th><th>Ações</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Bolsa Aurora</strong></td><td>Acessórios</td><td>ACC-001</td><td>12 un.</td><td>R$ 189,00</td><td><span class="badge text-bg-success">Disponível</span></td><td><button class="btn btn-sm btn-outline-secondary" type="button" aria-label="Editar Bolsa Aurora"><i class="bi bi-pencil"></i></button> <button class="btn btn-sm btn-outline-danger" type="button" aria-label="Excluir Bolsa Aurora"><i class="bi bi-trash"></i></button></td></tr>
+          <tr><td><strong>Caneca Serena</strong></td><td>Casa</td><td>CAS-014</td><td>5 un.</td><td>R$ 65,00</td><td><span class="badge text-bg-warning">Estoque baixo</span></td><td><button class="btn btn-sm btn-outline-secondary" type="button" aria-label="Editar Caneca Serena"><i class="bi bi-pencil"></i></button> <button class="btn btn-sm btn-outline-danger" type="button" aria-label="Excluir Caneca Serena"><i class="bi bi-trash"></i></button></td></tr>
+          <tr><td><strong>Blusa Essencial</strong></td><td>Vestuário</td><td>VES-021</td><td>0 un.</td><td>R$ 119,00</td><td><span class="badge text-bg-danger">Sem estoque</span></td><td><button class="btn btn-sm btn-outline-secondary" type="button" aria-label="Editar Blusa Essencial"><i class="bi bi-pencil"></i></button> <button class="btn btn-sm btn-outline-danger" type="button" aria-label="Excluir Blusa Essencial"><i class="bi bi-trash"></i></button></td></tr>
+        </tbody>
+      </table></div>
+      <div class="card-footer bg-white small text-secondary">Mostrando 3 produtos</div>
+    </section>
+    <p class="small text-secondary mt-4 mb-0">Wireframe estático. Os campos e botões não realizam operações.</p>
+  </main>
+</body>
+</html>

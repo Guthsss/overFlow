@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wireframe | Início — OrderFlow</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <header class="bg-white border-bottom">
+    <div class="container py-3">
+      <a class="navbar-brand fw-bold text-success" href="inicio.html"><i class="bi bi-box-seam"></i> OrderFlow</a>
+      <nav class="nav nav-pills gap-2 mt-3" aria-label="Navegação das telas">
+        <a class="nav-link active" aria-current="page" href="inicio.html">Início</a>
+        <a class="nav-link text-body" href="clientes.html">Clientes</a>
+        <a class="nav-link text-body" href="produtos.html">Produtos</a>
+        <a class="nav-link text-body" href="pedidos.html">Pedidos</a>
+        <a class="nav-link text-body" href="novo-pedido.html">Novo pedido</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container py-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+      <div><p class="text-secondary mb-1">QUARTA-FEIRA, 11 DE NOVEMBRO</p><h1 class="h2 mb-1">Resumo da loja</h1><p class="text-secondary mb-0">Uma visão simples do que está acontecendo.</p></div>
+      <a class="btn btn-success" href="novo-pedido.html"><i class="bi bi-plus-lg me-1"></i>Novo pedido</a>
+    </div>
+    <section class="row g-3 mb-4" aria-label="Indicadores">
+      <div class="col-12 col-sm-6 col-xl-3"><article class="card h-100"><div class="card-body"><p class="text-secondary mb-2">Faturamento entregue</p><p class="h3 mb-0">R$ 1.245,00</p></div></article></div>
+      <div class="col-12 col-sm-6 col-xl-3"><article class="card h-100"><div class="card-body"><p class="text-secondary mb-2">Ticket médio</p><p class="h3 mb-0">R$ 249,00</p></div></article></div>
+      <div class="col-12 col-sm-6 col-xl-3"><article class="card h-100"><div class="card-body"><p class="text-secondary mb-2">Pedidos entregues</p><p class="h3 mb-0">5</p></div></article></div>
+      <div class="col-12 col-sm-6 col-xl-3"><article class="card h-100"><div class="card-body"><p class="text-secondary mb-2">Mais vendido</p><p class="h4 mb-0">Bolsa Aurora</p></div></article></div>
+    </section>
+    <div class="row g-3">
+      <div class="col-12 col-lg-5">
+        <section class="card h-100">
+          <div class="card-header bg-white"><h2 class="h5 mb-0">Status dos pedidos</h2></div>
+          <div class="card-body">
+            <div class="progress mb-3" role="progressbar" aria-label="Pedidos por status" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar bg-success" style="width: 50%"></div><div class="progress-bar bg-primary" style="width: 25%"></div><div class="progress-bar bg-warning" style="width: 25%"></div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between px-0">Entregues <span class="text-secondary">5</span></li>
+              <li class="list-group-item d-flex justify-content-between px-0">Em andamento <span class="text-secondary">2</span></li>
+              <li class="list-group-item d-flex justify-content-between px-0">Pendentes <span class="text-secondary">1</span></li>
+              <li class="list-group-item d-flex justify-content-between px-0">Cancelados <span class="text-secondary">0</span></li>
+            </ul>
+          </div>
+        </section>
+      </div>
+      <div class="col-12 col-lg-7">
+        <section class="card h-100">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center"><h2 class="h5 mb-0">Pedidos recentes</h2><a class="btn btn-sm btn-outline-success" href="pedidos.html">Ver todos</a></div>
+          <div class="table-responsive"><table class="table table-hover align-middle mb-0"><thead><tr><th>Pedido</th><th>Cliente</th><th>Total</th><th>Status</th></tr></thead><tbody>
+            <tr><td>#OF-0008</td><td>Marina Alves</td><td>R$ 189,00</td><td><span class="badge text-bg-warning">Pendente</span></td></tr>
+            <tr><td>#OF-0007</td><td>Rafael Lima</td><td>R$ 320,00</td><td><span class="badge text-bg-primary">Enviado</span></td></tr>
+            <tr><td>#OF-0006</td><td>Ana Souza</td><td>R$ 145,00</td><td><span class="badge text-bg-success">Entregue</span></td></tr>
+          </tbody></table></div>
+        </section>
+      </div>
+    </div>
+    <p class="small text-secondary mt-4 mb-0">Wireframe estático para visualizar a tela inicial. Os dados são ilustrativos.</p>
+  </main>
+</body>
+</html>
