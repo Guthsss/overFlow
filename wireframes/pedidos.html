@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wireframe | Pedidos — OrderFlow</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <header class="bg-white border-bottom"><div class="container py-3">
+    <a class="navbar-brand fw-bold text-success" href="inicio.html"><i class="bi bi-box-seam"></i> OrderFlow</a>
+    <nav class="nav nav-pills gap-2 mt-3" aria-label="Navegação das telas">
+      <a class="nav-link text-body" href="inicio.html">Início</a><a class="nav-link text-body" href="clientes.html">Clientes</a><a class="nav-link text-body" href="produtos.html">Produtos</a><a class="nav-link active" aria-current="page" href="pedidos.html">Pedidos</a><a class="nav-link text-body" href="novo-pedido.html">Novo pedido</a>
+    </nav>
+  </div></header>
+  <main class="container py-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+      <div><p class="text-secondary mb-1">ACOMPANHAMENTO</p><h1 class="h2 mb-1">Pedidos</h1><p class="text-secondary mb-0">Consulte e acompanhe cada etapa.</p></div>
+      <a class="btn btn-success" href="novo-pedido.html"><i class="bi bi-plus-lg me-1"></i>Novo pedido</a>
+    </div>
+    <section class="card">
+      <div class="card-header bg-white row g-2 mx-0">
+        <div class="col-12 col-md-5"><label class="visually-hidden" for="search-order">Buscar pedido</label><input class="form-control" id="search-order" type="search" placeholder="Buscar pedido ou cliente"></div>
+        <div class="col-12 col-md-3"><label class="visually-hidden" for="status-order">Status</label><select class="form-select" id="status-order"><option>Todos os status</option><option>Pendente</option><option>Em processamento</option><option>Enviado</option><option>Entregue</option><option>Cancelado</option></select></div>
+        <div class="col-12 col-md-3"><label class="visually-hidden" for="sort-order">Ordenação</label><select class="form-select" id="sort-order"><option>Mais recentes</option><option>Mais antigos</option><option>Maior valor</option><option>Menor valor</option></select></div>
+      </div>
+      <div class="table-responsive"><table class="table table-hover align-middle mb-0">
+        <thead><tr><th>Pedido</th><th>Cliente</th><th>Data</th><th>Itens</th><th>Total</th><th>Status</th><th>Ações</th></tr></thead>
+        <tbody>
+          <tr><td>#OF-0008</td><td>Marina Alves</td><td>11 nov, 2026</td><td>2</td><td>R$ 189,00</td><td><select class="form-select form-select-sm status-select" aria-label="Status do pedido OF-0008"><option selected>Pendente</option><option>Em processamento</option><option>Cancelado</option></select></td><td><button class="btn btn-sm btn-outline-secondary" type="button" aria-label="Ver pedido OF-0008"><i class="bi bi-eye"></i></button></td></tr>
+          <tr><td>#OF-0007</td><td>Rafael Lima</td><td>10 nov, 2026</td><td>1</td><td>R$ 320,00</td><td><select class="form-select form-select-sm status-select" aria-label="Status do pedido OF-0007"><option selected>Enviado</option><option>Entregue</option><option>Cancelado</option></select></td><td><button class="btn btn-sm btn-outline-secondary" type="button" aria-label="Ver pedido OF-0007"><i class="bi bi-eye"></i></button></td></tr>
+          <tr><td>#OF-0006</td><td>Ana Souza</td><td>09 nov, 2026</td><td>3</td><td>R$ 145,00</td><td><select class="form-select form-select-sm status-select" aria-label="Status do pedido OF-0006"><option selected>Entregue</option></select></td><td><button class="btn btn-sm btn-outline-secondary" type="button" aria-label="Ver pedido OF-0006"><i class="bi bi-eye"></i></button></td></tr>
+        </tbody>
+      </table></div>
+      <div class="card-footer bg-white small text-secondary">Mostrando 3 pedidos</div>
+    </section>
+    <p class="small text-secondary mt-4 mb-0">Wireframe estático. Busca, filtros e mudança de status são apenas representações.</p>
+  </main>
+</body>
+</html>

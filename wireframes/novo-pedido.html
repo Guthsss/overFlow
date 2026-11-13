@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wireframe | Novo pedido — OrderFlow</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <header class="bg-white border-bottom"><div class="container py-3">
+    <a class="navbar-brand fw-bold text-success" href="inicio.html"><i class="bi bi-box-seam"></i> OrderFlow</a>
+    <nav class="nav nav-pills gap-2 mt-3" aria-label="Navegação das telas">
+      <a class="nav-link text-body" href="inicio.html">Início</a><a class="nav-link text-body" href="clientes.html">Clientes</a><a class="nav-link text-body" href="produtos.html">Produtos</a><a class="nav-link text-body" href="pedidos.html">Pedidos</a><a class="nav-link active" aria-current="page" href="novo-pedido.html">Novo pedido</a>
+    </nav>
+  </div></header>
+  <main class="container py-4">
+    <div class="mb-4"><p class="text-secondary mb-1">EMISSÃO</p><h1 class="h2 mb-1">Novo pedido</h1><p class="text-secondary mb-0">Preencha as informações e confira o resumo antes de finalizar.</p></div>
+    <form>
+      <div class="row g-3">
+        <div class="col-12 col-lg-8">
+          <section class="card mb-3"><div class="card-header bg-white"><h2 class="h5 mb-0">1. Cliente e produtos</h2></div><div class="card-body">
+            <label class="form-label" for="order-customer">Cliente</label><select class="form-select mb-3" id="order-customer"><option selected>Selecione um cliente</option><option>Ana Souza</option><option>Rafael Lima</option><option>Marina Alves</option></select>
+            <div class="row g-2 align-items-end">
+              <div class="col-12 col-md-6"><label class="form-label" for="order-product">Produto</label><select class="form-select" id="order-product"><option selected>Selecione um produto</option><option>Bolsa Aurora — R$ 189,00</option><option>Caneca Serena — R$ 65,00</option></select></div>
+              <div class="col-6 col-md-3"><label class="form-label" for="order-quantity">Quantidade</label><input class="form-control" id="order-quantity" type="number" value="1" min="1"></div>
+              <div class="col-6 col-md-3"><button class="btn btn-outline-success w-100" type="button">Adicionar</button></div>
+            </div>
+            <div class="table-responsive mt-4"><table class="table table-sm align-middle mb-0"><thead><tr><th>Item</th><th>Quantidade</th><th>Preço</th><th>Subtotal</th></tr></thead><tbody><tr><td>Bolsa Aurora</td><td>1</td><td>R$ 189,00</td><td>R$ 189,00</td></tr><tr><td>Caneca Serena</td><td>2</td><td>R$ 65,00</td><td>R$ 130,00</td></tr></tbody></table></div>
+          </div></section>
+          <section class="card"><div class="card-header bg-white"><h2 class="h5 mb-0">2. Entrega e pagamento</h2></div><div class="card-body"><div class="row g-3">
+            <div class="col-12 col-md-6"><label class="form-label" for="shipping-region">Região de entrega</label><select class="form-select" id="shipping-region"><option selected>Selecione uma região</option><option>Capital</option><option>Interior</option><option>Outras regiões</option></select></div>
+            <div class="col-12 col-md-6"><label class="form-label" for="payment-method">Forma de pagamento</label><select class="form-select" id="payment-method"><option selected>Selecione</option><option>Pix</option><option>Cartão de crédito</option><option>Boleto</option></select></div>
+            <div class="col-12"><label class="form-label" for="notes">Observações (opcional)</label><textarea class="form-control" id="notes" rows="2" placeholder="Uma informação útil para este pedido"></textarea></div>
+          </div></div></section>
+        </div>
+        <div class="col-12 col-lg-4"><aside class="card"><div class="card-header bg-white"><h2 class="h5 mb-0">Resumo do pedido</h2></div><div class="card-body">
+          <div class="d-flex justify-content-between mb-2"><span>Subtotal</span><strong>R$ 319,00</strong></div><div class="d-flex justify-content-between mb-2"><span>Frete</span><strong>R$ 15,00</strong></div><div class="d-flex justify-content-between mb-3"><span>Desconto</span><strong>R$ 0,00</strong></div>
+          <label class="visually-hidden" for="coupon">Cupom de desconto</label><div class="input-group mb-2"><input class="form-control" id="coupon" placeholder="Cupom de desconto"><button class="btn btn-outline-secondary" type="button">Aplicar</button></div><small class="text-secondary">Exemplo: BEMVINDO10</small>
+          <div class="d-flex justify-content-between border-top pt-3 mt-3 mb-3"><strong>Total</strong><strong class="fs-5">R$ 334,00</strong></div><button class="btn btn-success w-100" type="button">Finalizar pedido</button>
+        </div></aside></div>
+      </div>
+    </form>
+    <p class="small text-secondary mt-4 mb-0">Wireframe estático. O formulário não calcula nem registra o pedido.</p>
+  </main>
+</body>
+</html>

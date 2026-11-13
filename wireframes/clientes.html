@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wireframe | Clientes — OrderFlow</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <header class="bg-white border-bottom"><div class="container py-3">
+    <a class="navbar-brand fw-bold text-success" href="inicio.html"><i class="bi bi-box-seam"></i> OrderFlow</a>
+    <nav class="nav nav-pills gap-2 mt-3" aria-label="Navegação das telas">
+      <a class="nav-link text-body" href="inicio.html">Início</a><a class="nav-link active" aria-current="page" href="clientes.html">Clientes</a><a class="nav-link text-body" href="produtos.html">Produtos</a><a class="nav-link text-body" href="pedidos.html">Pedidos</a><a class="nav-link text-body" href="novo-pedido.html">Novo pedido</a>
+    </nav>
+  </div></header>
+  <main class="container py-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+      <div><p class="text-secondary mb-1">CADASTROS</p><h1 class="h2 mb-1">Clientes</h1><p class="text-secondary mb-0">Mantenha os contatos da sua loja organizados.</p></div>
+      <button class="btn btn-success" type="button"><i class="bi bi-person-plus me-1"></i>Novo cliente</button>
+    </div>
+    <section class="card">
+      <div class="card-header bg-white row g-2 align-items-center mx-0">
+        <label class="visually-hidden" for="search-customer">Buscar cliente</label>
+        <div class="col-12 col-md-7"><div class="input-group"><span class="input-group-text bg-white"><i class="bi bi-search"></i></span><input class="form-control" id="search-customer" type="search" placeholder="Buscar por nome ou e-mail"></div></div>
+        <span class="col small text-secondary text-md-end">3 clientes</span>
+      </div>
+      <div class="table-responsive"><table class="table table-hover align-middle mb-0">
+        <thead><tr><th>Nome</th><th>E-mail</th><th>Telefone</th><th>Pedidos</th><th>Total entregue</th><th>Ações</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ana Souza</strong></td><td>ana.souza@email.com</td><td>(11) 99912-3456</td><td>4</td><td>R$ 840,00</td><td><button class="btn btn-sm btn-outline-secondary" type="button" aria-label="Editar Ana Souza"><i class="bi bi-pencil"></i></button> <button class="btn btn-sm btn-outline-danger" type="button" aria-label="Excluir Ana Souza"><i class="bi bi-trash"></i></button></td></tr>
+          <tr><td><strong>Rafael Lima</strong></td><td>rafael.lima@email.com</td><td>(21) 99876-5432</td><td>2</td><td>R$ 320,00</td><td><button class="btn btn-sm btn-outline-secondary" type="button" aria-label="Editar Rafael Lima"><i class="bi bi-pencil"></i></button> <button class="btn btn-sm btn-outline-danger" type="button" aria-label="Excluir Rafael Lima"><i class="bi bi-trash"></i></button></td></tr>
+          <tr><td><strong>Marina Alves</strong></td><td>marina.alves@email.com</td><td>(41) 99765-4321</td><td>1</td><td>R$ 0,00</td><td><button class="btn btn-sm btn-outline-secondary" type="button" aria-label="Editar Marina Alves"><i class="bi bi-pencil"></i></button> <button class="btn btn-sm btn-outline-danger" type="button" aria-label="Excluir Marina Alves"><i class="bi bi-trash"></i></button></td></tr>
+        </tbody>
+      </table></div>
+      <div class="card-footer bg-white small text-secondary">Mostrando 3 clientes</div>
+    </section>
+    <p class="small text-secondary mt-4 mb-0">Wireframe estático. Os botões e a busca são apenas elementos visuais.</p>
+  </main>
+</body>
+</html>
