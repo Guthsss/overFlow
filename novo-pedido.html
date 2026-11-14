@@ -6,9 +6,12 @@
   <title>OrderFlow | Novo pedido</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+  <!-- ========================= -->
+  <!-- CABEÇALHO E NAVEGAÇÃO PRINCIPAL -->
+  <!-- ========================= -->
   <header class="bg-white border-bottom">
     <div class="container py-3">
       <a class="brand" href="index.html"><i class="bi bi-box-seam"></i> OrderFlow</a>
@@ -21,9 +24,16 @@
       </nav>
     </div>
   </header>
+
+  <!-- ========================= -->
+  <!-- CRIAÇÃO DE NOVO PEDIDO -->
+  <!-- ========================= -->
   <main class="container py-4">
     <div class="mb-4"><p class="text-secondary mb-1">EMISSÃO</p><h1 class="h2 mb-1">Novo pedido</h1><p class="text-secondary mb-0">Selecione o cliente e adicione os produtos.</p></div>
     <form id="order-form">
+      <!-- ========================= -->
+      <!-- FORMULÁRIO DO PEDIDO -->
+      <!-- ========================= -->
       <div class="row g-3">
         <div class="col-12 col-lg-8">
           <section class="card mb-3"><div class="card-header bg-white"><h2 class="h6 mb-0">Pedido</h2></div><div class="card-body">
@@ -33,6 +43,7 @@
               <div class="col-6 col-md-3"><label class="form-label" for="order-quantity">Quantidade</label><input class="form-control" id="order-quantity" type="number" min="1" value="1"></div>
               <div class="col-6 col-md-3"><button class="btn btn-outline-primary w-100" id="add-product-button" type="button">Adicionar</button></div>
             </div>
+            <!-- Container do carrinho do pedido preenchido dinamicamente pelo app.js -->
             <div class="list-group list-group-flush my-3" id="order-items"><p class="text-secondary small py-3 mb-0">Nenhum produto adicionado.</p></div>
             <div class="text-end border-top pt-3">Subtotal: <strong id="items-subtotal">R$ 0,00</strong></div>
           </div></section>
