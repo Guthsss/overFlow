@@ -194,7 +194,8 @@ main.container {
 }
 
 /* --- 6. Carrinho e formulários --- */
-.cart-item {
+.cart-item,
+.carrinho-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -203,27 +204,32 @@ main.container {
   border-bottom: 1px solid var(--bs-border-color);
 }
 
-.cart-item:first-child {
+.cart-item:first-child,
+.carrinho-item:first-child {
   border-top: 1px solid var(--bs-border-color);
 }
 
-.cart-item-info {
+.cart-item-info,
+.carrinho-item-info {
   display: flex;
   min-width: 0;
   flex-direction: column;
 }
 
-.cart-item-info strong {
+.cart-item-info strong,
+.carrinho-item-info strong {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.cart-item-info small {
+.cart-item-info small,
+.carrinho-item-info small {
   color: #727c73;
 }
 
-.cart-item-controls {
+.cart-item-controls,
+.carrinho-item-controls {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
