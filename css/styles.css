@@ -1,0 +1,62 @@
+:root {
+  --bs-primary: #52796f;
+  --bs-primary-rgb: 82, 121, 111;
+  --bs-body-bg: #f6f5f0;
+  --bs-body-color: #303b37;
+  --bs-border-color: #e4e6df;
+  --bs-font-sans-serif: "Segoe UI", system-ui, sans-serif;
+}
+
+body { min-width: 320px; }
+.brand { color: #303b37; font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+.brand:hover { color: var(--bs-primary); }
+.brand i { color: var(--bs-primary); }
+.nav-pills { scrollbar-width: thin; }
+.nav-pills .nav-link { color: #55635b; white-space: nowrap; }
+.nav-pills .nav-link.active { background: var(--bs-primary); }
+.card { border-color: var(--bs-border-color); box-shadow: 0 .1rem .35rem rgb(40 50 42 / 4%); }
+.card-header, .card-footer { border-color: var(--bs-border-color); }
+.table { --bs-table-hover-bg: #f7f8f3; }
+.table thead th { color: #626d63; font-size: .82rem; font-weight: 600; white-space: nowrap; }
+.table tbody td { font-size: .9rem; }
+.search-field { width: min(100%, 300px); }
+.filter-field { width: auto; min-width: 155px; }
+.status-select { width: auto; min-width: 130px; }
+.row-actions { display: flex; gap: .35rem; }
+.row-action { padding: .2rem .4rem; border: 0; border-radius: .35rem; background: transparent; color: #62736a; }
+.row-action:hover { background: #e9eee8; color: #34594c; }
+.empty-table-cell { padding: 2rem 1rem !important; color: #727c73; text-align: center; }
+.empty-table-cell .btn-link { display: block; margin: .25rem auto 0; }
+.status-badge { display: inline-block; padding: .3rem .6rem; border-radius: 2rem; font-size: .78rem; white-space: nowrap; }
+.status-delivered { background: #e3f1e5; color: #3f704b; }
+.status-processing { background: #e5eeeb; color: #40665b; }
+.status-pending { background: #fbf0dc; color: #8a682e; }
+.status-cancelled { background: #f7e6e2; color: #9c564a; }
+.status-select.status-delivered { background-color: #e3f1e5; }
+.status-select.status-processing { background-color: #e5eeeb; }
+.status-select.status-pending { background-color: #fbf0dc; }
+.status-select.status-cancelled { background-color: #f7e6e2; }
+.status-progress { height: .65rem; background: #edf0e9; }
+.progress-delivered { background: #6f9d76; }
+.progress-processing { background: #52796f; }
+.progress-pending { background: #d3a650; }
+.progress-cancelled { background: #be7664; }
+.cart-item { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 0; border-bottom: 1px solid var(--bs-border-color); }
+.cart-item:first-child { border-top: 1px solid var(--bs-border-color); }
+.cart-item-info { display: flex; min-width: 0; flex-direction: column; }
+.cart-item-info strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cart-item-info small { color: #727c73; }
+.cart-item-controls { display: flex; flex: 0 0 auto; align-items: center; gap: .5rem; }
+.quantity-button { width: 1.7rem; height: 1.7rem; border: 1px solid var(--bs-border-color); border-radius: .35rem; background: white; }
+.remove-item { color: #9c564a; }
+.coupon-success { color: #3f704b; }
+.coupon-error { color: #9c564a; }
+.app-toast { background: #52796f; color: #fff; }
+.app-toast.toast-error { background: #9c564a; }
+.app-toast .toast-body { display: flex; align-items: center; gap: .5rem; }
+.app-toast .btn-close { filter: brightness(0) invert(1); }
+
+@media (max-width: 575.98px) {
+  main.container { padding-top: 1.25rem !important; }
+  .search-field, .filter-field { width: 100%; }
+}
