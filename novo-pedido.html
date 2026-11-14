@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OrderFlow | Novo pedido</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+  <header class="bg-white border-bottom">
+    <div class="container py-3">
+      <a class="brand" href="index.html"><i class="bi bi-box-seam"></i> OrderFlow</a>
+      <nav class="nav nav-pills flex-nowrap gap-2 mt-3 overflow-x-auto" aria-label="Navegação principal">
+        <a class="nav-link" href="index.html">Início</a>
+        <a class="nav-link" href="clientes.html">Clientes</a>
+        <a class="nav-link" href="produtos.html">Produtos</a>
+        <a class="nav-link" href="pedidos.html">Pedidos <span class="badge rounded-pill text-bg-light ms-1" id="pending-count">0</span></a>
+        <a class="nav-link active" aria-current="page" href="novo-pedido.html">Novo pedido</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container py-4">
+    <div class="mb-4"><p class="text-secondary mb-1">EMISSÃO</p><h1 class="h2 mb-1">Novo pedido</h1><p class="text-secondary mb-0">Selecione o cliente e adicione os produtos.</p></div>
+    <form id="order-form">
+      <div class="row g-3">
+        <div class="col-12 col-lg-8">
+          <section class="card mb-3"><div class="card-header bg-white"><h2 class="h6 mb-0">Pedido</h2></div><div class="card-body">
+            <label class="form-label" for="order-customer">Cliente</label><select class="form-select mb-3" id="order-customer" required><option value="" selected disabled>Selecione um cliente</option></select>
+            <div class="row g-2 align-items-end">
+              <div class="col-12 col-md-6"><label class="form-label" for="order-product">Produto</label><select class="form-select" id="order-product"><option value="" selected disabled>Selecione um produto</option></select></div>
+              <div class="col-6 col-md-3"><label class="form-label" for="order-quantity">Quantidade</label><input class="form-control" id="order-quantity" type="number" min="1" value="1"></div>
+              <div class="col-6 col-md-3"><button class="btn btn-outline-primary w-100" id="add-product-button" type="button">Adicionar</button></div>
+            </div>
+            <div class="list-group list-group-flush my-3" id="order-items"><p class="text-secondary small py-3 mb-0">Nenhum produto adicionado.</p></div>
+            <div class="text-end border-top pt-3">Subtotal: <strong id="items-subtotal">R$ 0,00</strong></div>
+          </div></section>
+          <section class="card"><div class="card-header bg-white"><h2 class="h6 mb-0">Entrega e pagamento</h2></div><div class="card-body"><div class="row g-3">
+            <div class="col-12 col-md-6"><label class="form-label" for="shipping-region">Região de entrega</label><select class="form-select" id="shipping-region" required><option value="" selected disabled>Selecione</option><option>Capital</option><option>Interior</option><option>Outras regiões</option></select></div>
+            <div class="col-12 col-md-6"><label class="form-label" for="payment-method">Pagamento</label><select class="form-select" id="payment-method" required><option value="" selected disabled>Selecione</option><option>Pix</option><option>Cartão de crédito</option><option>Boleto</option></select></div>
+            <div class="col-12"><label class="form-label" for="order-notes">Observações (opcional)</label><textarea class="form-control" id="order-notes" rows="2"></textarea></div>
+          </div></div></section>
+        </div>
+        <div class="col-12 col-lg-4"><aside class="card"><div class="card-header bg-white"><h2 class="h6 mb-0">Resumo</h2></div><div class="card-body">
+          <div class="d-flex justify-content-between mb-2"><span>Subtotal</span><strong id="summary-subtotal">R$ 0,00</strong></div>
+          <div class="d-flex justify-content-between mb-2"><span>Frete</span><strong id="summary-shipping">R$ 0,00</strong></div>
+          <div class="d-flex justify-content-between mb-3"><span>Desconto</span><strong id="summary-discount">− R$ 0,00</strong></div>
+          <div class="input-group mb-2"><input class="form-control" id="coupon-code" type="text" placeholder="Cupom" aria-label="Cupom de desconto"><button class="btn btn-outline-secondary" id="apply-coupon" type="button">Aplicar</button></div>
+          <small class="d-block text-secondary mb-2">BEMVINDO10, FLOW15 ou FRETEGRATIS</small><p class="small" id="coupon-feedback" aria-live="polite"></p>
+          <div class="d-flex justify-content-between border-top pt-3 mb-3"><strong>Total</strong><strong class="fs-5" id="summary-total">R$ 0,00</strong></div>
+          <button class="btn btn-primary w-100" type="submit">Finalizar pedido</button>
+        </div></aside></div>
+      </div>
+    </form>
+  </main>
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/validacoes.js"></script>
+  <script src="js/calculadora.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
