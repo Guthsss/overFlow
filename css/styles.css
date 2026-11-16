@@ -287,3 +287,103 @@ main.container {
     width: 100%;
   }
 }
+
+:root[data-bs-theme="dark"] {
+  --bs-primary: #82b6a4;
+  --bs-primary-rgb: 130, 182, 164;
+  --bs-body-bg: #18211e;
+  --bs-body-color: #e3e9e5;
+  --bs-border-color: #36443e;
+}
+
+:root[data-bs-theme="dark"] .brand {
+  color: var(--bs-body-color);
+}
+
+:root[data-bs-theme="dark"] .nav-pills .nav-link {
+  color: #c1cec7;
+}
+
+:root[data-bs-theme="dark"] .nav-pills .nav-link.active {
+  color: #18211e;
+}
+
+:root[data-bs-theme="dark"] .bg-white {
+  background-color: var(--bs-tertiary-bg) !important;
+}
+
+:root[data-bs-theme="dark"] .card {
+  box-shadow: 0 0.1rem 0.35rem rgb(0 0 0 / 16%);
+}
+
+:root[data-bs-theme="dark"] .table {
+  --bs-table-hover-bg: #2b3731;
+}
+
+:root[data-bs-theme="dark"] .table thead th,
+:root[data-bs-theme="dark"] .row-action {
+  color: #b6c3bb;
+}
+
+:root[data-bs-theme="dark"] .row-action:hover {
+  background: #35443c;
+  color: #e3e9e5;
+}
+
+:root[data-bs-theme="dark"] [data-theme-toggle] {
+  border-color: #708078;
+  color: #dce5df;
+}
+
+:root[data-bs-theme="dark"] .empty-table-cell,
+:root[data-bs-theme="dark"] .cart-item-info small,
+:root[data-bs-theme="dark"] .carrinho-item-info small {
+  color: #aab8af;
+}
+
+:root[data-bs-theme="dark"] .coupon-success {
+  color: #b3dfba;
+}
+
+:root[data-bs-theme="dark"] .coupon-error,
+:root[data-bs-theme="dark"] .remove-item {
+  color: #e8b3a8;
+}
+
+:root[data-bs-theme="dark"] .status-delivered,
+:root[data-bs-theme="dark"] .status-select.status-delivered {
+  background-color: #294a34;
+  color: #b3dfba;
+}
+
+:root[data-bs-theme="dark"] .status-processing,
+:root[data-bs-theme="dark"] .status-select.status-processing {
+  background-color: #2b4740;
+  color: #b4d8cb;
+}
+
+:root[data-bs-theme="dark"] .status-pending,
+:root[data-bs-theme="dark"] .status-select.status-pending {
+  background-color: #514326;
+  color: #f0d99e;
+}
+
+:root[data-bs-theme="dark"] .status-cancelled,
+:root[data-bs-theme="dark"] .status-select.status-cancelled {
+  background-color: #512f2a;
+  color: #e8b3a8;
+}
+
+:root[data-bs-theme="dark"] .status-progress {
+  background: #303b35;
+}
+
+:root[data-bs-theme="dark"] .quantity-button {
+  background: #242f2a;
+  color: var(--bs-body-color);
+}
+
+:root[data-bs-theme="dark"] .text-bg-light {
+  background-color: #35423b !important;
+  color: #dce5df !important;
+}

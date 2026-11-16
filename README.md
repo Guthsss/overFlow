@@ -33,6 +33,7 @@ Desenvolver uma aplicação web que demonstre a construção de uma interface in
 - **Produtos:** cadastro, edição, busca, filtros de categoria e estoque, e exclusão.
 - **Pedidos:** consulta, busca, filtros, ordenação e atualização de status.
 - **Novo pedido:** seleção de cliente e produtos, carrinho, região de entrega, forma de pagamento, cupom e cálculo dos valores.
+- **Tema:** alterne entre os temas claro e escuro pelo botão no cabeçalho; a preferência fica salva neste navegador.
 - **Persistência local:** armazenamento dos dados no navegador por meio do `localStorage`.
 
 O projeto é demonstrativo e não possui back-end, autenticação ou sincronização entre dispositivos. Os dados permanecem no navegador utilizado e podem ser removidos ao limpar os dados locais do site.
@@ -102,10 +103,10 @@ Também é possível abrir `index.html` diretamente no navegador. O uso de um se
 
 ## Integrantes e responsabilidades
 
-| Integrante | Responsabilidades principais |
+| Integrante | Contribuições registradas nos commits |
 | :--- | :--- |
-| **Henrique M. Jakubiak** | Estrutura das páginas, interface, componentes visuais e responsividade. |
-| **Gregory L. Guths** | Persistência local, validações, regras de negócio, dashboard e fluxo de pedidos. |
+| **Henrique M. Jakubiak** | Criou os wireframes e a estrutura HTML das telas de início, clientes, produtos, pedidos e novo pedido; contribuiu com os estilos CSS iniciais. Commits: `ef145c3`, `e93f0db`, `30e5f48`, `3b518bb`, `f2b0986`, `d29602e`, `cc98dc0`. |
+| **Gregory L. Guths** | Criou os arquivos iniciais do projeto e implementou a lógica da aplicação, cálculos de pedidos, dashboard, armazenamento CRUD e validações; também contribuiu com estilos, documentação, deploy no GitHub Pages e alternância de tema. Commits: `40b0fec`, `9311809`, `15856ed`, `8300ea0`, `fef7709`, `f72d245`, `69c4875`, `bccc5f3`, `d5e1d26`, `1e1e475`. |
 
 ## Considerações finais
 
