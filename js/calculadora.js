@@ -8,12 +8,6 @@
     "Outras regiões": 35,
   };
 
-  const cupons = {
-    BEMVINDO10: { tipo: "percentual", valor: 10, minimo: 0 },
-    FLOW15: { tipo: "percentual", valor: 15, minimo: 500 },
-    FRETEGRATIS: { tipo: "frete", valor: 0, minimo: 0 },
-  };
-
   /**
    * Calcula subtotal, frete, desconto e valor total do pedido.
    * @param {Array<{price: number, quantity: number}>} itens
@@ -27,20 +21,17 @@
     if (subtotal >= 500) frete = 0;
 
     const codigo = String(codigoCupom).trim().toUpperCase();
-    const cupom = codigo ? cupons[codigo] : null;
+    const cupom = codigo
+      ? window.OrderFlowStorage.get("coupons").find((item) => item.name.toUpperCase() === codigo)
+      : null;
     let desconto = 0;
     let mensagemCupom = "";
 
     if (codigo && !cupom) {
       mensagemCupom = "Cupom não reconhecido. Confira o código e tente novamente.";
-    } else if (cupom && subtotal < cupom.minimo) {
-      mensagemCupom = `Este cupom vale para compras a partir de ${formatarMoeda(cupom.minimo)}.`;
-    } else if (cupom?.tipo === "percentual") {
-      desconto = Math.round(subtotal * cupom.valor) / 100;
-      mensagemCupom = `Cupom aplicado: ${cupom.valor}% de desconto.`;
-    } else if (cupom?.tipo === "frete") {
-      frete = 0;
-      mensagemCupom = "Cupom aplicado: frete grátis.";
+    } else if (cupom) {
+      desconto = Math.round(subtotal * cupom.discount) / 100;
+      mensagemCupom = `Cupom aplicado: ${cupom.discount}% de desconto.`;
     }
 
     desconto = Math.min(desconto, subtotal);
@@ -51,7 +42,7 @@
       shipping: frete,
       discount: desconto,
       total,
-      coupon: cupom && !mensagemCupom.startsWith("Este cupom") ? codigo : "",
+      coupon: cupom ? codigo : "",
       couponMessage: mensagemCupom,
     };
   };
@@ -75,6 +66,5 @@
     formatarMoeda,
     formatCurrency,
     shippingByRegion: fretePorRegiao,
-    coupons: cupons,
   };
 })();

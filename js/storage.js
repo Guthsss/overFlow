@@ -7,6 +7,7 @@
     customers: `${PREFIXO}.customers`,
     products: `${PREFIXO}.products`,
     orders: `${PREFIXO}.orders`,
+    coupons: `${PREFIXO}.coupons`,
     initialized: `${PREFIXO}.initialized`,
   };
 

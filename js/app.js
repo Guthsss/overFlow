@@ -45,6 +45,7 @@
   let carrinho = [];
   let cupom = "";
   let alvoExclusao = null;
+  let cupomExclusaoId = null;
 
   /**
    * Escapa caracteres especiais para renderizar conteúdo textual em HTML com segurança.
@@ -297,6 +298,19 @@
   }
 
   /**
+   * Exibe os códigos de cupom disponíveis no formulário de pedido.
+   */
+  function renderizarCuponsDisponiveis() {
+    const elemento = obterElemento("#available-coupons");
+    if (!elemento) return;
+    const cuponsPersonalizados = loja.get("coupons");
+    elemento.textContent = cuponsPersonalizados.length ? "Cupons disponíveis:" : "Nenhum cupom cadastrado.";
+    obterElemento("#custom-coupons").innerHTML = cuponsPersonalizados.length
+      ? cuponsPersonalizados.map((item) => `<div class="d-flex align-items-center justify-content-between gap-2"><small>${escaparHtml(item.name)} — ${escaparHtml(item.discount)}% de desconto</small><button class="row-action remove-item" data-action="delete-coupon" data-id="${escaparHtml(item.id)}" type="button" aria-label="Excluir cupom ${escaparHtml(item.name)}"><i class="bi bi-trash"></i></button></div>`).join("")
+      : "";
+  }
+
+  /**
    * Recarrega todas as áreas principais da aplicação em um único ponto de atualização.
    * Essa função centraliza os renderizadores para evitar repetições de código.
    */
@@ -365,6 +379,14 @@
     if (action === "delete-customer") return perguntarExclusao("customers", id);
     if (action === "delete-product") return perguntarExclusao("products", id);
     if (action === "delete-order") return perguntarExclusao("orders", id);
+    if (action === "delete-coupon") {
+      const coupon = loja.get("coupons").find((item) => item.id === id);
+      if (!coupon) throw new Error("Cupom não encontrado.");
+      cupomExclusaoId = id;
+      obterElemento("#delete-coupon-modal .modal-body").textContent =
+        `O cupom ${coupon.name} deixará de ficar disponível para novos pedidos.`;
+      return bootstrap.Modal.getOrCreateInstance(obterElemento("#delete-coupon-modal")).show();
+    }
     if (action === "add-customer" || action === "add-product") {
       const entity = action === "add-customer" ? "customer" : "product";
       reiniciarFormulario(entity);
@@ -493,6 +515,43 @@
     renderizarCarrinho();
   });
 
+  escutarEvento("#coupon-form", "submit", (event) => {
+    event.preventDefault();
+    executarComTratamento(() => {
+      const name = obterElemento("#coupon-name").value.trim();
+      const discount = Number(obterElemento("#coupon-discount").value);
+      if (name.length < 2) throw new Error("O nome do cupom precisa ter pelo menos 2 caracteres.");
+      if (!Number.isInteger(discount) || discount < 1 || discount > 100)
+        throw new Error("O desconto deve ser um número inteiro entre 1% e 100%.");
+      const exists = loja.get("coupons").some((item) => item.name.toLocaleUpperCase("pt-BR") === name.toLocaleUpperCase("pt-BR"));
+      if (exists) throw new Error("Já existe um cupom com esse nome.");
+
+      loja.insert("coupons", { name, discount, createdAt: new Date().toISOString() });
+      event.currentTarget.reset();
+      bootstrap.Modal.getOrCreateInstance(obterElemento("#coupon-modal")).hide();
+      renderizarCuponsDisponiveis();
+      notificar("Cupom criado com sucesso.");
+    });
+  });
+
+  escutarEvento("#confirm-delete-coupon", "click", () => {
+    if (!cupomExclusaoId) return;
+    executarComTratamento(() => {
+      const coupon = loja.get("coupons").find((item) => item.id === cupomExclusaoId);
+      if (!coupon) throw new Error("Cupom não encontrado.");
+      loja.remove("coupons", cupomExclusaoId);
+      if (cupom.toUpperCase() === coupon.name.toUpperCase()) {
+        cupom = "";
+        obterElemento("#coupon-code").value = "";
+        renderizarCarrinho();
+      }
+      bootstrap.Modal.getOrCreateInstance(obterElemento("#delete-coupon-modal")).hide();
+      cupomExclusaoId = null;
+      renderizarCuponsDisponiveis();
+      notificar("Cupom excluído.");
+    });
+  });
+
   escutarEvento("#order-form", "submit", (event) => {
     event.preventDefault();
     executarComTratamento(() => {
@@ -504,11 +563,11 @@
       };
       regras.validateOrder(order, loja.get("customers"), loja.get("products"));
       const totals = calculadora.calculate(carrinho, order.region, cupom);
-      if (cupom && totals.cupom !== cupom) throw new Error("O cupom informado não pode ser aplicado.");
+      if (cupom && totals.coupon !== cupom) throw new Error("O cupom informado não pode ser aplicado.");
       const now = new Date().toISOString();
       loja.createOrder({
         ...order, number: loja.nextOrderNumber(), subtotal: totals.subtotal, shipping: totals.shipping,
-        discount: totals.discount, total: totals.total, cupom: totals.cupom, notes: obterElemento("#order-notes").value.trim(),
+        discount: totals.discount, total: totals.total, cupom: totals.coupon, notes: obterElemento("#order-notes").value.trim(),
         status: "Pendente", createdAt: now, updatedAt: now,
       });
       event.currentTarget.reset();
@@ -523,6 +582,8 @@
 
   escutarEvento("#customer-modal", "hidden.bs.modal", () => reiniciarFormulario("customer"));
   escutarEvento("#product-modal", "hidden.bs.modal", () => reiniciarFormulario("product"));
+  escutarEvento("#coupon-modal", "hidden.bs.modal", () => obterElemento("#coupon-form")?.reset());
+  escutarEvento("#delete-coupon-modal", "hidden.bs.modal", () => { cupomExclusaoId = null; });
   escutarEvento("#delete-modal", "hidden.bs.modal", () => { alvoExclusao = null; });
   document.querySelectorAll('[data-bs-target="#customer-modal"]').forEach((button) =>
     button.addEventListener("click", () => reiniciarFormulario("customer")));
@@ -532,6 +593,7 @@
   try {
     loja.seed();
     atualizarTela();
+    renderizarCuponsDisponiveis();
     renderizarCarrinho();
   } catch (error) {
     console.error(error);
