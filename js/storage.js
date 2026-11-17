@@ -61,7 +61,21 @@
    * @param {string} entidade Nome da entidade.
    * @returns {Array<any>} Registros da entidade.
    */
-  const obter = (entidade) => lerLista(CHAVES[entidade]);
+  const obter = (entidade) => {
+    const registros = lerLista(CHAVES[entidade]);
+    if (entidade !== "orders") return registros;
+
+    let migrado = false;
+    const pedidos = registros.map((pedido) => {
+      if (pedido.coupon !== undefined || pedido.cupom === undefined) return pedido;
+      migrado = true;
+      const { cupom, ...pedidoMigrado } = pedido;
+      return { ...pedidoMigrado, coupon: cupom };
+    });
+
+    if (migrado) salvarLista(CHAVES.orders, pedidos);
+    return pedidos;
+  };
 
   /**
    * Salva a lista de uma entidade no localStorage.

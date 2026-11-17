@@ -579,7 +579,7 @@
       const now = new Date().toISOString();
       loja.createOrder({
         ...order, number: loja.nextOrderNumber(), subtotal: totals.subtotal, shipping: totals.shipping,
-        discount: totals.discount, total: totals.total, cupom: totals.coupon, notes: obterElemento("#order-notes").value.trim(),
+        discount: totals.discount, total: totals.total, coupon: totals.coupon, notes: obterElemento("#order-notes").value.trim(),
         status: "Pendente", createdAt: now, updatedAt: now,
       });
       event.currentTarget.reset();
