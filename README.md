@@ -32,7 +32,7 @@ Desenvolver uma aplicação web que demonstre a construção de uma interface in
 - **Clientes:** cadastro, edição, busca e exclusão de clientes.
 - **Produtos:** cadastro, edição, busca, filtros de categoria e estoque, e exclusão.
 - **Pedidos:** consulta, busca, filtros, ordenação e atualização de status.
-- **Novo pedido:** seleção de cliente e produtos, carrinho, região de entrega, forma de pagamento, criação de cupons percentuais e cálculo dos valores.
+- **Novo pedido:** seleção de cliente e produtos, carrinho, região de entrega, forma de pagamento, criação de cupons percentuais ou de frete grátis e cálculo dos valores.
 - **Tema:** alterne entre os temas claro e escuro pelo botão no cabeçalho; a preferência fica salva neste navegador.
 - **Persistência local:** armazenamento dos dados no navegador por meio do `localStorage`.
 

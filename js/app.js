@@ -306,7 +306,7 @@
     const cuponsPersonalizados = loja.get("coupons");
     elemento.textContent = cuponsPersonalizados.length ? "Cupons disponíveis:" : "Nenhum cupom cadastrado.";
     obterElemento("#custom-coupons").innerHTML = cuponsPersonalizados.length
-      ? cuponsPersonalizados.map((item) => `<div class="d-flex align-items-center justify-content-between gap-2"><small>${escaparHtml(item.name)} — ${escaparHtml(item.discount)}% de desconto</small><button class="row-action remove-item" data-action="delete-coupon" data-id="${escaparHtml(item.id)}" type="button" aria-label="Excluir cupom ${escaparHtml(item.name)}"><i class="bi bi-trash"></i></button></div>`).join("")
+      ? cuponsPersonalizados.map((item) => `<div class="d-flex align-items-center justify-content-between gap-2"><small>${escaparHtml(item.name)} — ${item.type === "free-shipping" ? "Frete grátis" : `${escaparHtml(item.discount)}% de desconto`}</small><button class="row-action remove-item" data-action="delete-coupon" data-id="${escaparHtml(item.id)}" type="button" aria-label="Excluir cupom ${escaparHtml(item.name)}"><i class="bi bi-trash"></i></button></div>`).join("")
       : "";
   }
 
@@ -519,20 +519,32 @@
     event.preventDefault();
     executarComTratamento(() => {
       const name = obterElemento("#coupon-name").value.trim();
+      const type = obterElemento("#coupon-type").value;
       const discount = Number(obterElemento("#coupon-discount").value);
       if (name.length < 2) throw new Error("O nome do cupom precisa ter pelo menos 2 caracteres.");
-      if (!Number.isInteger(discount) || discount < 1 || discount > 100)
+      if (!["percentage", "free-shipping"].includes(type)) throw new Error("Selecione um tipo de benefício válido.");
+      if (type === "percentage" && (!Number.isInteger(discount) || discount < 1 || discount > 100))
         throw new Error("O desconto deve ser um número inteiro entre 1% e 100%.");
       const exists = loja.get("coupons").some((item) => item.name.toLocaleUpperCase("pt-BR") === name.toLocaleUpperCase("pt-BR"));
       if (exists) throw new Error("Já existe um cupom com esse nome.");
 
-      loja.insert("coupons", { name, discount, createdAt: new Date().toISOString() });
+      loja.insert("coupons", {
+        name, type, discount: type === "percentage" ? discount : 0, createdAt: new Date().toISOString(),
+      });
       event.currentTarget.reset();
       bootstrap.Modal.getOrCreateInstance(obterElemento("#coupon-modal")).hide();
       renderizarCuponsDisponiveis();
       notificar("Cupom criado com sucesso.");
     });
   });
+
+  const atualizarTipoCupom = () => {
+    const freteGratis = obterElemento("#coupon-type").value === "free-shipping";
+    obterElemento("#coupon-discount-group").classList.toggle("d-none", freteGratis);
+    obterElemento("#coupon-discount").disabled = freteGratis;
+  };
+  escutarEvento("#coupon-type", "change", atualizarTipoCupom);
+  escutarEvento("#coupon-modal", "show.bs.modal", atualizarTipoCupom);
 
   escutarEvento("#confirm-delete-coupon", "click", () => {
     if (!cupomExclusaoId) return;
@@ -582,7 +594,10 @@
 
   escutarEvento("#customer-modal", "hidden.bs.modal", () => reiniciarFormulario("customer"));
   escutarEvento("#product-modal", "hidden.bs.modal", () => reiniciarFormulario("product"));
-  escutarEvento("#coupon-modal", "hidden.bs.modal", () => obterElemento("#coupon-form")?.reset());
+  escutarEvento("#coupon-modal", "hidden.bs.modal", () => {
+    obterElemento("#coupon-form")?.reset();
+    atualizarTipoCupom();
+  });
   escutarEvento("#delete-coupon-modal", "hidden.bs.modal", () => { cupomExclusaoId = null; });
   escutarEvento("#delete-modal", "hidden.bs.modal", () => { alvoExclusao = null; });
   document.querySelectorAll('[data-bs-target="#customer-modal"]').forEach((button) =>

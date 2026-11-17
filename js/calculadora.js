@@ -30,8 +30,13 @@
     if (codigo && !cupom) {
       mensagemCupom = "Cupom não reconhecido. Confira o código e tente novamente.";
     } else if (cupom) {
-      desconto = Math.round(subtotal * cupom.discount) / 100;
-      mensagemCupom = `Cupom aplicado: ${cupom.discount}% de desconto.`;
+      if (cupom.type === "free-shipping") {
+        frete = 0;
+        mensagemCupom = "Cupom aplicado: frete grátis.";
+      } else {
+        desconto = Math.round(subtotal * cupom.discount) / 100;
+        mensagemCupom = `Cupom aplicado: ${cupom.discount}% de desconto.`;
+      }
     }
 
     desconto = Math.min(desconto, subtotal);
